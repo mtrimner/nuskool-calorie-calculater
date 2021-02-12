@@ -30,6 +30,7 @@ const initialValues = {
 const Form = () => {
 
   const [values, setValues] = useState(initialValues)
+  const [errors, setErrors] = useState({})
 
   const validate = () => {
     let temp = {}
@@ -40,6 +41,11 @@ const Form = () => {
     temp.currentWeight = values.currentWeight ? "" : "Oops! You forgot to give us your current weight."
     temp.goalWeight = values.goalWeight ? "" : "Oops! We need your goal weight to give you an accurate recommendation."
     temp.targetDate = values.targetDate ? "" : "When do you want to reach your goal?"
+    setErrors({
+      ...temp
+    })
+
+    return Object.values(temp).every(x => x == "")
   }
   
   const handleChange = (event) => {
@@ -51,8 +57,15 @@ const Form = () => {
   };
 
   const classes = useStyles()
+
+  const handleSubmit = e => {
+    e.preventDefault()
+    if(validate())
+      window.alert('testing..')
+  }
+
   return (
-    <form className={classes.root}>
+    <form className={classes.root} onSubmit={handleSubmit}>
       <Grid container>
       <Grid item xs={6}>
           <Controls.Input
@@ -62,6 +75,7 @@ const Form = () => {
             onChange={handleChange}
             label="Age"
             variant="outlined"
+            error={errors.age}
           />
       </Grid>
       <Grid item xs={6}>
@@ -72,6 +86,7 @@ const Form = () => {
             onChange={handleChange}
             label="Current Weight"
             variant="outlined"
+            error={errors.currentWeight}
           />
       </Grid>
       <Grid item xs={6}>
@@ -82,6 +97,7 @@ const Form = () => {
             onChange={handleChange}
             label="Goal Weight"
             variant="outlined"
+            error={errors.goalWeight}
           />
       </Grid>
       <Grid item xs={6}>
@@ -91,6 +107,7 @@ const Form = () => {
             onChange={handleChange}
             label="Gender"
             items={genderItems}
+            error={errors.gender}
           />
       </Grid>
       <Grid item xs={6}>
@@ -106,6 +123,7 @@ const Form = () => {
               {id: 7, title: 7},
             ]}
             variant="outlined"
+            error={errors.feet}
           />
       </Grid>
       <Grid item xs={6}>
@@ -129,6 +147,7 @@ const Form = () => {
               {id: 11, title: 11},
             ]}
             variant="outlined"
+            error={errors.inches}
           />
       </Grid>
       <Grid item xs={6}>
@@ -138,6 +157,7 @@ const Form = () => {
             onChange={handleChange}
             label="Target Date"
             inputVariant="outlined"
+            error={errors.targetDate}
           />
       </Grid>
       <div>

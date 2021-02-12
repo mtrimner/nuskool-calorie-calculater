@@ -1,10 +1,12 @@
 import React from 'react';
-import { FormControl, OutlinedInput, InputLabel } from '@material-ui/core';
+import { FormControl, OutlinedInput, InputLabel, FormHelperText } from '@material-ui/core';
 
-const Input = ({type, name, value, onChange, label, variant}) => {
+const Input = ({type, name, value, onChange, label, error=null, variant}) => {
   
     return (
-      <FormControl variant={variant}>
+      <FormControl variant={variant}
+      {...(error && {error: true})}
+      >
         <InputLabel>{label}</InputLabel>
         <OutlinedInput
           type={type}
@@ -12,7 +14,9 @@ const Input = ({type, name, value, onChange, label, variant}) => {
           value={value}
           onChange={onChange}
           label={label}
+          {...(error && {error: true, helperText: error})}
         />
+        {error && <FormHelperText>{error}</FormHelperText>}
       </FormControl>
     )
 }
