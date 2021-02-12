@@ -10,39 +10,20 @@ import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
-
-
-const useStyles = makeStyles((theme) => ({
-  formControl: {
-    margin: theme.spacing(2),
-    minWidth: 120,
-  },
-}));
-
-const initialValues = {
-  age: '',
-  gender: 'female',
-  height: '',
-  currentWeight: '',
-  goalWeight: ''
-}
+import Paper from '@material-ui/core/Paper';
+import Display from './Display';
+import Form from './components/Form'
 
 const App = () => {
-  const classes = useStyles();
-  const [values, setValues] = useState(initialValues)
-
-  const handleChange = (event) => {
-    const { name, value } = event.target
-    setValues({
-      ...values,
-      [name]: value
-    })
-  };
 
   return (
     <>
+    <Display />
+    {/* <Form/>
+    <Paper className={classes.paperContent}>
+      <Display/>
       <form>
-        <Grid container direction="column">
+        <Grid container direction="column" alignItems="center" spacing={1}>
           <Grid item xs={6}>
             <FormControl className={classes.formControl} variant="outlined">
               <InputLabel htmlFor="age-component">Age</InputLabel>
@@ -102,6 +83,7 @@ const App = () => {
                 </Select>
               </FormControl>
             </Grid>
+            <Grid item xs={6}>
               <FormControl component="fieldset" className={classes.formControl}>
                 <FormLabel component="legend">Gender</FormLabel>
                 <RadioGroup row aria-label="gender" name="gender" value={values.gender} onChange={handleChange} >
@@ -109,8 +91,10 @@ const App = () => {
                   <FormControlLabel value="male" control={<Radio />} label="Male" />
                 </RadioGroup>
               </FormControl>
+            </Grid>
           </Grid>
         </form>
+      </Paper> */}
       </>
   )
 }
