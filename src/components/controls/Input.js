@@ -1,14 +1,13 @@
 import React from 'react';
 import { FormControl, OutlinedInput, InputLabel } from '@material-ui/core';
 
-const Input = ({type, id, name, value, onChange, label}) => {
+const Input = ({type, name, value, onChange, label, variant}) => {
   
     return (
-      <FormControl variant="outlined">
+      <FormControl variant={variant}>
         <InputLabel>{label}</InputLabel>
         <OutlinedInput
           type={type}
-          id={id}
           name={name}
           value={value}
           onChange={onChange}
