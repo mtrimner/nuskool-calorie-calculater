@@ -24,12 +24,23 @@ const initialValues = {
     inches: '',
     currentWeight: '',
     goalWeight: '',
-    targetDate: ''
+    targetDate: new Date()
   }
 
 const Form = () => {
 
   const [values, setValues] = useState(initialValues)
+
+  const validate = () => {
+    let temp = {}
+    temp.age = values.age ? "" : "Oops! Please enter your age to get an accurate calculation."
+    temp.gender = values.gender ? "" : "Oops! This field is required to get an accurate calculation."
+    temp.feet = values.feet ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
+    temp.inches = values.inches ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
+    temp.currentWeight = values.currentWeight ? "" : "Oops! You forgot to give us your current weight."
+    temp.goalWeight = values.goalWeight ? "" : "Oops! We need your goal weight to give you an accurate recommendation."
+    temp.targetDate = values.targetDate ? "" : "When do you want to reach your goal?"
+  }
   
   const handleChange = (event) => {
     const { name, value } = event.target
@@ -120,12 +131,24 @@ const Form = () => {
             variant="outlined"
           />
       </Grid>
-      <Controls.Checkbox
-        name='targetDate'
-        value={values.targetDate}
-        onChange={handleChange}
-        label="Target Date"
-        inputVariant="outlined"
+      <Grid item xs={6}>
+          <Controls.DatePicker
+            name='targetDate'
+            value={values.targetDate}
+            onChange={handleChange}
+            label="Target Date"
+            inputVariant="outlined"
+          />
+      </Grid>
+      <div>
+      <Controls.Button
+        variant="contained"
+        color="primary"
+        size="large"
+        text="submit"
+        type="submit"
+      />
+      </div>
       </Grid>
     </form>
   )

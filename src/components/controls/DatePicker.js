@@ -12,9 +12,9 @@ const DatePicker = ({ name, label, value, onChange, inputVariant }) => {
 
     return (
       <MuiPickersUtilsProvider utils={DateFnsUtils}>
-        <KeyboardDatePicker disableToolbar variant="inline" inputVariant={inputVariant}
+        <KeyboardDatePicker variant="inline" inputVariant={inputVariant}
           label={label}
-          format="MMM/dd/yyy"
+          format="MM/dd/yyy"
           name={name}
           value={value}
           onChange={date => onChange(convertDateToEventParams(name, date))}
