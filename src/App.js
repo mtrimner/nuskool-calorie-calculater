@@ -9,11 +9,12 @@ import FormLabel from '@material-ui/core/FormLabel';
 import Select from '@material-ui/core/Select';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
 
 
 const useStyles = makeStyles((theme) => ({
   formControl: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
     minWidth: 120,
   },
 }));
@@ -22,7 +23,8 @@ const initialValues = {
   age: '',
   gender: 'female',
   height: '',
-  weight: ''
+  currentWeight: '',
+  goalWeight: ''
 }
 
 const App = () => {
@@ -33,39 +35,80 @@ const App = () => {
     const { name, value } = event.target
     setValues({
       ...values,
-      [name]:value
+      [name]: value
     })
   };
 
   return (
     <>
       <form>
-        <Grid container>
-          <FormControl variant="outlined" className={classes.formControl}>
-              <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
-              <Select
-                labelId="demo-simple-select-outlined-label"
-                id="demo-simple-select-outlined"
+        <Grid container direction="column">
+          <Grid item xs={6}>
+            <FormControl className={classes.formControl} variant="outlined">
+              <InputLabel htmlFor="age-component">Age</InputLabel>
+              <OutlinedInput
+                type="number"
+                id="age-component"
                 name='age'
                 value={values.age}
                 onChange={handleChange}
                 label="Age"
-              >
-                <MenuItem value="">
-                  <em>None</em>
-                </MenuItem>
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
-              </Select>
+              />
             </FormControl>
-            <FormControl component="fieldset">
-              <FormLabel component="legend">Gender</FormLabel>
-              <RadioGroup aria-label="gender" name="gender" value={values.gender} onChange={handleChange}>
-                <FormControlLabel value="female" control={<Radio />} label="Female" />
-                <FormControlLabel value="male" control={<Radio />} label="Male" />
-              </RadioGroup>
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl className={classes.formControl} variant="outlined">
+              <InputLabel htmlFor="age-component">Current Weight</InputLabel>
+              <OutlinedInput
+                type="number"
+                id="age-component"
+                name='currentWeight'
+                value={values.currentWeight}
+                onChange={handleChange}
+                label="Current Weight"
+              />
             </FormControl>
+          </Grid>
+          <Grid item xs={6}>
+            <FormControl className={classes.formControl} variant="outlined">
+              <InputLabel htmlFor="age-component">Goal Weight</InputLabel>
+              <OutlinedInput
+                type="number"
+                id="age-component"
+                name='goalWeight'
+                value={values.goalWeight}
+                onChange={handleChange}
+                label="Goal Weight"
+              />
+            </FormControl>
+            </Grid>
+            <Grid item xs={6}>
+            <FormControl variant="outlined" className={classes.formControl}>
+                <InputLabel id="demo-simple-select-outlined-label">Age</InputLabel>
+                <Select
+                  labelId="demo-simple-select-outlined-label"
+                  id="demo-simple-select-outlined"
+                  name='age'
+                  value={values.age}
+                  onChange={handleChange}
+                  label="Age"
+                >
+                  <MenuItem value="">
+                    <em>None</em>
+                  </MenuItem>
+                  <MenuItem value={10}>Ten</MenuItem>
+                  <MenuItem value={20}>Twenty</MenuItem>
+                  <MenuItem value={30}>Thirty</MenuItem>
+                </Select>
+              </FormControl>
+            </Grid>
+              <FormControl component="fieldset" className={classes.formControl}>
+                <FormLabel component="legend">Gender</FormLabel>
+                <RadioGroup row aria-label="gender" name="gender" value={values.gender} onChange={handleChange} >
+                  <FormControlLabel value="female" control={<Radio />} label="Female" />
+                  <FormControlLabel value="male" control={<Radio />} label="Male" />
+                </RadioGroup>
+              </FormControl>
           </Grid>
         </form>
       </>
