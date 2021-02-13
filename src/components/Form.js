@@ -18,11 +18,11 @@ const genderItems = [
 ]
 
 const activityLevel = [
-  {id: 1.2, title: 'sedentary(little or no exercise)'},
-  {id: 1.375, title: 'lightly active (light exercise/sports 1-3 days/week'},
-  {id: 1.55, title: 'moderately active (moderate exercise/sports 3-5 days/week'},
-  {id: 1.725, title: 'very active (hard exercise/sports 6-7 days/week'},
-  {id: 1.9, title: 'very active (very hard exercise/sports & physical job or 2x training'}
+  {id: '1.2', title: 'sedentary(little or no exercise)'},
+  {id: '1.375', title: 'lightly active (light exercise/sports 1-3 days/week'},
+  {id: '1.55', title: 'moderately active (moderate exercise/sports 3-5 days/week'},
+  {id: '1.725', title: 'very active (hard exercise/sports 6-7 days/week'},
+  {id: '1.9', title: 'very active (very hard exercise/sports & physical job or 2x training'}
 ]
 
 const initialValues = {
