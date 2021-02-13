@@ -13,8 +13,16 @@ const useStyles = makeStyles(theme => ({
 }))
 
 const genderItems = [
-    {id: 'male', title: 'Male'},
-    {id: 'female', title: 'Female'},
+  {id: 'male', title: 'Male'},
+  {id: 'female', title: 'Female'},
+]
+
+const activityLevel = [
+  {id: 1.2, title: 'sedentary(little or no exercise)'},
+  {id: 1.375, title: 'lightly active (light exercise/sports 1-3 days/week'},
+  {id: 1.55, title: 'moderately active (moderate exercise/sports 3-5 days/week'},
+  {id: 1.725, title: 'very active (hard exercise/sports 6-7 days/week'},
+  {id: 1.9, title: 'very active (very hard exercise/sports & physical job or 2x training'}
 ]
 
 const initialValues = {
@@ -24,6 +32,7 @@ const initialValues = {
     inches: '',
     currentWeight: '',
     goalWeight: '',
+    activityMultiplier: 1.2,
     targetDate: new Date()
   }
 
@@ -36,7 +45,6 @@ const Form = () => {
     let temp = {...errors}
     if('age' in fieldValues)
     temp.age = fieldValues.age ? "" : "Oops! Please enter your age to get an accurate calculation."
-    temp.gender = values.gender ? "" : "Oops! This field is required to get an accurate calculation."
     if('feet' in fieldValues)
     temp.feet = fieldValues.feet ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
     if('inches' in fieldValues)
@@ -45,7 +53,6 @@ const Form = () => {
     temp.currentWeight = fieldValues.currentWeight ? "" : "Oops! You forgot to give us your current weight."
     if('goalWeight' in fieldValues)
     temp.goalWeight = values.goalWeight ? "" : "Oops! We need your goal weight to give you an accurate recommendation."
-    temp.targetDate = values.targetDate ? "" : "When do you want to reach your goal?"
     setErrors({
       ...temp
     })
@@ -63,6 +70,8 @@ const Form = () => {
   };
 
   const classes = useStyles()
+
+  console.log(values)
 
   const handleSubmit = e => {
     e.preventDefault()
@@ -163,6 +172,15 @@ const Form = () => {
             label="Target Date"
             inputVariant="outlined"
             error={errors.targetDate}
+          />
+      </Grid>
+      <Grid item xs={6}>
+          <Controls.RadioGroup 
+            name='activityMultiplier'
+            value={values.activityMultiplier}
+            onChange={handleChange}
+            label="Activity Level"
+            items={activityLevel}
           />
       </Grid>
       <div>
