@@ -14,7 +14,7 @@ const Input = ({type, name, value, onChange, label, error=null, variant}) => {
           value={value}
           onChange={onChange}
           label={label}
-          {...(error && {error: true, helperText: error})}
+          {...(error && {error: true})}
         />
         {error && <FormHelperText>{error}</FormHelperText>}
       </FormControl>

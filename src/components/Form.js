@@ -32,20 +32,25 @@ const Form = () => {
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
 
-  const validate = () => {
-    let temp = {}
-    temp.age = values.age ? "" : "Oops! Please enter your age to get an accurate calculation."
+  const validate = (fieldValues = values) => {
+    let temp = {...errors}
+    if('age' in fieldValues)
+    temp.age = fieldValues.age ? "" : "Oops! Please enter your age to get an accurate calculation."
     temp.gender = values.gender ? "" : "Oops! This field is required to get an accurate calculation."
-    temp.feet = values.feet ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
-    temp.inches = values.inches ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
-    temp.currentWeight = values.currentWeight ? "" : "Oops! You forgot to give us your current weight."
+    if('feet' in fieldValues)
+    temp.feet = fieldValues.feet ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
+    if('inches' in fieldValues)
+    temp.inches = fieldValues.inches ? "" : "Hey! We need to know how tall you are to get an accurate calculation."
+    if('currentWeight' in fieldValues)
+    temp.currentWeight = fieldValues.currentWeight ? "" : "Oops! You forgot to give us your current weight."
+    if('goalWeight' in fieldValues)
     temp.goalWeight = values.goalWeight ? "" : "Oops! We need your goal weight to give you an accurate recommendation."
     temp.targetDate = values.targetDate ? "" : "When do you want to reach your goal?"
     setErrors({
       ...temp
     })
-
-    return Object.values(temp).every(x => x == "")
+    if(fieldValues == values)
+      return Object.values(temp).every(x => x == "")
   }
   
   const handleChange = (event) => {
@@ -54,6 +59,7 @@ const Form = () => {
       ...values,
       [name]: value
     })
+    validate({[name]: value})
   };
 
   const classes = useStyles()
@@ -61,7 +67,7 @@ const Form = () => {
   const handleSubmit = e => {
     e.preventDefault()
     if(validate())
-      window.alert('testing..')
+      console.log("all good")
   }
 
   return (
@@ -107,7 +113,6 @@ const Form = () => {
             onChange={handleChange}
             label="Gender"
             items={genderItems}
-            error={errors.gender}
           />
       </Grid>
       <Grid item xs={6}>
