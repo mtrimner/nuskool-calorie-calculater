@@ -2,14 +2,8 @@ import React, {useState} from 'react';
 import {Paper} from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 import Form from './components/Form';
+import CalculatedData from './components/CalculatedData'
 
-const initialValues = {
-    age: '',
-    gender: 'female',
-    height: '',
-    currentWeight: '',
-    goalWeight: ''
-  }
 
   const useStyles = makeStyles(theme => ({
       pageContent: {
@@ -17,14 +11,24 @@ const initialValues = {
           padding: theme.spacing(3)
       }
   }))
+
 const Display = () => {
-  const [values, setValues] = useState(initialValues)
+  const [data, setData] = useState({})
   const classes = useStyles();
+  const height = ((data.feet * 12) + data.inches)
+
+
+  const applyData = (values) => {
+
+    setData(values)
+  }
 
   return (
     <Paper className={classes.pageContent}>
-      <Form />
+      <Form applyData={applyData}/>
+      <CalculatedData />
     </Paper>
+    
   )
 }
 

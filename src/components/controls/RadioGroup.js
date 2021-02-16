@@ -2,7 +2,6 @@ import React from 'react';
 import { FormControl, FormLabel, RadioGroup as MuiRadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 
 const RadioGroup = ({name, label, value, onChange, items}) => {
-console.log(value)
     return (
     <FormControl>
       <FormLabel>{label}</FormLabel>

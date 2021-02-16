@@ -32,11 +32,11 @@ const initialValues = {
     inches: '',
     currentWeight: '',
     goalWeight: '',
-    activityMultiplier: 1.2,
+    activityMultiplier: '1.2',
     targetDate: new Date()
   }
 
-const Form = () => {
+const Form = ({applyData}) => {
 
   const [values, setValues] = useState(initialValues)
   const [errors, setErrors] = useState({})
@@ -71,12 +71,10 @@ const Form = () => {
 
   const classes = useStyles()
 
-  console.log(values)
-
   const handleSubmit = e => {
     e.preventDefault()
     if(validate())
-      console.log("all good")
+      applyData(values)
   }
 
   return (
