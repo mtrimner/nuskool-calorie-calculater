@@ -21,9 +21,9 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   button: {
-    alignItems: 'center',
-    justifyContent: 'center'
-  }
+    alignItems: "center",
+    justifyContent: "center",
+  },
 }));
 
 const genderItems = [
@@ -215,15 +215,15 @@ const Form = ({ applyData }) => {
           />
         </Grid>
         <Grid item xs={12} container className={classes.button}>
-        <div>
-          <Controls.Button
-            variant="contained"
-            color="primary"
-            size="large"
-            text="submit"
-            type="submit"
-          />
-        </div>
+          <div>
+            <Controls.Button
+              variant="contained"
+              color="primary"
+              size="large"
+              text="submit"
+              type="submit"
+            />
+          </div>
         </Grid>
       </Grid>
     </form>

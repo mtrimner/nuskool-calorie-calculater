@@ -10,7 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
   radio: {
-    marginTop: 5
+    marginTop: 5,
   },
 }));
 

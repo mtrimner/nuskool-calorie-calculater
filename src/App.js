@@ -1,18 +1,5 @@
 import React, { useState } from "react";
-import Grid from "@material-ui/core/Grid";
-import { makeStyles } from "@material-ui/core/styles";
-import InputLabel from "@material-ui/core/InputLabel";
-import MenuItem from "@material-ui/core/MenuItem";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormLabel from "@material-ui/core/FormLabel";
-import Select from "@material-ui/core/Select";
-import Radio from "@material-ui/core/Radio";
-import RadioGroup from "@material-ui/core/RadioGroup";
-import OutlinedInput from "@material-ui/core/OutlinedInput";
-import Paper from "@material-ui/core/Paper";
 import Display from "./Display";
-import Form from "./components/Form";
 
 const App = () => {
   return (

@@ -3,6 +3,7 @@ import {
   FormControl,
   InputLabel,
   Select as MuiSelect,
+  NativeSelect,
   MenuItem,
   FormHelperText,
 } from "@material-ui/core";
@@ -19,12 +20,12 @@ const Select = ({
   return (
     <FormControl variant={variant} {...(error && { error: true })}>
       <InputLabel>{label}</InputLabel>
-      <MuiSelect label={label} name={name} value={value} onChange={onChange}>
-        <MenuItem value="">None</MenuItem>
+      <MuiSelect native label={label} name={name} value={value} onChange={onChange}>
+        <option value=""/>
         {options.map((item) => (
-          <MenuItem key={item.id} value={item.id}>
+          <option key={item.id} value={item.id}>
             {item.title}
-          </MenuItem>
+          </option>
         ))}
       </MuiSelect>
       {error && <FormHelperText>{error}</FormHelperText>}

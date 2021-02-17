@@ -29,8 +29,8 @@ const ShowData = ({
   console.log(BMR, TDEE, age, currentWeight, goalWeight, height, gender);
   console.log(caloriesForGoal);
   return (
-    <Grid container spacing={3}>
-      <Grid item xs={4}>
+    <Grid container spacing={4}>
+      <Grid item xs={12} md={6} lg={4}>
         <Controls.Card
           data={BMR}
           units="calories/day"
@@ -38,7 +38,7 @@ const ShowData = ({
           content="The number of calories your body burns to perform basic life sustaining tasks."
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={6} lg={4}>
         <Controls.Card
           data={TDEE}
           units="calories/day"
@@ -46,7 +46,7 @@ const ShowData = ({
           content="Total number of calories burned per day. Consists of BMR x Activity Level."
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={6} lg={4}>
         <Controls.Card
           data={caloriesForGoal}
           units="calories/day"

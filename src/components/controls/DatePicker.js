@@ -13,7 +13,6 @@ const DatePicker = ({
   inputVariant,
   minDate,
 }) => {
-  
   const convertDateToEventParams = (name, value) => ({
     target: {
       name,
@@ -31,7 +30,8 @@ const DatePicker = ({
         name={name}
         value={value}
         onChange={(date) => onChange(convertDateToEventParams(name, date))}
-        minDate={minDate}
+        disablePast
+        autoOk
       />
     </MuiPickersUtilsProvider>
   );
