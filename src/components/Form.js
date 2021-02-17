@@ -16,10 +16,14 @@ import { isToday, isTomorrow } from "date-fns";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& .MuiFormControl-root": {
-      width: "50%",
-      margin: theme.spacing(2),
+      width: "90%",
+      // margin: theme.spacing(2),
     },
   },
+  button: {
+    alignItems: 'center',
+    justifyContent: 'center'
+  }
 }));
 
 const genderItems = [
@@ -50,13 +54,13 @@ const initialValues = {
   currentWeight: "",
   goalWeight: "",
   activityMultiplier: "1.2",
-  targetDate: new Date(new Date().getTime() + 86400000)
+  targetDate: new Date(new Date().getTime() + 86400000),
 };
 
 const Form = ({ applyData }) => {
   const [values, setValues] = useState(initialValues);
   const [errors, setErrors] = useState({});
-  console.log(values.targetDate)
+
   const validate = (fieldValues = values) => {
     let temp = { ...errors };
     if ("age" in fieldValues)
@@ -102,9 +106,9 @@ const Form = ({ applyData }) => {
   };
 
   return (
-    <form className={classes.root} onSubmit={handleSubmit}>
-      <Grid container>
-        <Grid item xs={6}>
+    <form onSubmit={handleSubmit} className={classes.root}>
+      <Grid container spacing={4}>
+        <Grid item xs={12} sm={6}>
           <Controls.Input
             type="number"
             name="age"
@@ -115,7 +119,16 @@ const Form = ({ applyData }) => {
             error={errors.age}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
+          <Controls.RadioGroup
+            name="gender"
+            value={values.gender}
+            onChange={handleChange}
+            label="Gender"
+            items={genderItems}
+          />
+        </Grid>
+        <Grid item xs={12} sm={6}>
           <Controls.Input
             type="number"
             name="currentWeight"
@@ -126,7 +139,7 @@ const Form = ({ applyData }) => {
             error={errors.currentWeight}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Controls.Input
             type="number"
             name="goalWeight"
@@ -137,56 +150,51 @@ const Form = ({ applyData }) => {
             error={errors.goalWeight}
           />
         </Grid>
-        <Grid item xs={6}>
-          <Controls.RadioGroup
-            name="gender"
-            value={values.gender}
-            onChange={handleChange}
-            label="Gender"
-            items={genderItems}
-          />
+        <Grid item xs={12} md={6}>
+          <Grid container spacing={4}>
+            <Grid item xs={12} sm={6}>
+              <Controls.Select
+                name="feet"
+                value={values.feet}
+                onChange={handleChange}
+                label="Height(Feet)"
+                options={[
+                  { id: 4, title: 4 },
+                  { id: 5, title: 5 },
+                  { id: 6, title: 6 },
+                  { id: 7, title: 7 },
+                ]}
+                variant="outlined"
+                error={errors.feet}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <Controls.Select
+                name="inches"
+                value={values.inches}
+                onChange={handleChange}
+                label="Height(Inches)"
+                options={[
+                  { id: 0, title: 0 },
+                  { id: 1, title: 1 },
+                  { id: 2, title: 2 },
+                  { id: 3, title: 3 },
+                  { id: 4, title: 4 },
+                  { id: 5, title: 5 },
+                  { id: 6, title: 6 },
+                  { id: 7, title: 7 },
+                  { id: 8, title: 8 },
+                  { id: 9, title: 9 },
+                  { id: 10, title: 10 },
+                  { id: 11, title: 11 },
+                ]}
+                variant="outlined"
+                error={errors.inches}
+              />
+            </Grid>
+          </Grid>
         </Grid>
-        <Grid item xs={6}>
-          <Controls.Select
-            name="feet"
-            value={values.feet}
-            onChange={handleChange}
-            label="Height(Feet)"
-            options={[
-              { id: 4, title: 4 },
-              { id: 5, title: 5 },
-              { id: 6, title: 6 },
-              { id: 7, title: 7 },
-            ]}
-            variant="outlined"
-            error={errors.feet}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <Controls.Select
-            name="inches"
-            value={values.inches}
-            onChange={handleChange}
-            label="Height(Inches)"
-            options={[
-              { id: 0, title: 0 },
-              { id: 1, title: 1 },
-              { id: 2, title: 2 },
-              { id: 3, title: 3 },
-              { id: 4, title: 4 },
-              { id: 5, title: 5 },
-              { id: 6, title: 6 },
-              { id: 7, title: 7 },
-              { id: 8, title: 8 },
-              { id: 9, title: 9 },
-              { id: 10, title: 10 },
-              { id: 11, title: 11 },
-            ]}
-            variant="outlined"
-            error={errors.inches}
-          />
-        </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Controls.DatePicker
             name="targetDate"
             value={values.targetDate}
@@ -197,7 +205,7 @@ const Form = ({ applyData }) => {
             minDate={Date()}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <Controls.RadioGroup
             name="activityMultiplier"
             value={values.activityMultiplier}
@@ -206,6 +214,7 @@ const Form = ({ applyData }) => {
             items={activityLevel}
           />
         </Grid>
+        <Grid item xs={12} container className={classes.button}>
         <div>
           <Controls.Button
             variant="contained"
@@ -215,6 +224,7 @@ const Form = ({ applyData }) => {
             type="submit"
           />
         </div>
+        </Grid>
       </Grid>
     </form>
   );

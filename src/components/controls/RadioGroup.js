@@ -6,8 +6,17 @@ import {
   FormControlLabel,
   Radio,
 } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+
+const useStyles = makeStyles((theme) => ({
+  radio: {
+    marginTop: 5
+  },
+}));
 
 const RadioGroup = ({ name, label, value, onChange, items }) => {
+  const classes = useStyles();
+
   return (
     <FormControl>
       <FormLabel>{label}</FormLabel>
@@ -19,6 +28,7 @@ const RadioGroup = ({ name, label, value, onChange, items }) => {
               value={item.id}
               control={<Radio color="primary" />}
               label={item.title}
+              className={classes.radio}
             />
           );
         })}

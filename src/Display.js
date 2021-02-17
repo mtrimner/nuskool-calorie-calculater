@@ -11,15 +11,15 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 const initialValues = {
-  age: '',
-  gender: 'female',
-  feet: '',
-  inches: '',
-  currentWeight: '',
-  goalWeight: '',
-  activityMultiplier: '1.2',
-  targetDate: ''
-}
+  age: "",
+  gender: "female",
+  feet: "",
+  inches: "",
+  currentWeight: "",
+  goalWeight: "",
+  activityMultiplier: "1.2",
+  targetDate: "",
+};
 const Display = () => {
   const [data, setData] = useState({});
   const classes = useStyles();
@@ -40,19 +40,21 @@ const Display = () => {
     setData(values);
   };
 
-console.log(data)
+  console.log(data);
   return (
     <Paper className={classes.pageContent}>
       <Form applyData={applyData} />
-      {age !== undefined && <CalculatedData
-        age={age}
-        gender={gender}
-        height={height}
-        currentWeight={currentWeight}
-        goalWeight={goalWeight}
-        activityMultiplier={activityMultiplier}
-        targetDate={targetDate}
-      />}
+      {age !== undefined && (
+        <CalculatedData
+          age={age}
+          gender={gender}
+          height={height}
+          currentWeight={currentWeight}
+          goalWeight={goalWeight}
+          activityMultiplier={activityMultiplier}
+          targetDate={targetDate}
+        />
+      )}
     </Paper>
   );
 };

@@ -10,10 +10,18 @@ export const calculateTDEE = (BMR, activityMultiplier) => {
   return BMR * activityMultiplier;
 };
 
-export const calculateCaloriesForGoalWeight = (targetDate, tdee, currentWeight, goalWeight) => {
-    const today = new Date()
-    const daysFromTargetDate = parseInt((targetDate.getTime() - today.getTime()) / (1000 * 3600 * 24))
-    const goalWeightCaloriesPerDay = (((currentWeight - goalWeight) * 3500) / daysFromTargetDate)
-   
-    return (tdee - goalWeightCaloriesPerDay)
-}
+export const calculateCaloriesForGoalWeight = (
+  targetDate,
+  tdee,
+  currentWeight,
+  goalWeight
+) => {
+  const today = new Date();
+  const daysFromTargetDate = parseInt(
+    (targetDate.getTime() - today.getTime()) / (1000 * 3600 * 24)
+  );
+  const goalWeightCaloriesPerDay =
+    ((currentWeight - goalWeight) * 3500) / daysFromTargetDate;
+
+  return tdee - goalWeightCaloriesPerDay;
+};

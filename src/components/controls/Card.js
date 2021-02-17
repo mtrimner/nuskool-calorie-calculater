@@ -43,7 +43,9 @@ const Card = ({ title, data, units, content }) => {
         <Typography align="center">{units}</Typography>
       </CardContent>
       <Divider variant="middle" />
-      <Typography align="center" className={classes.content}>{content}</Typography>
+      <Typography align="center" className={classes.content}>
+        {content}
+      </Typography>
     </MuiCard>
   );
 };

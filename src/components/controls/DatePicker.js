@@ -5,8 +5,15 @@ import {
 } from "@material-ui/pickers";
 import DateFnsUtils from "@date-io/date-fns";
 
-
-const DatePicker = ({ name, label, value, onChange, inputVariant, minDate }) => {
+const DatePicker = ({
+  name,
+  label,
+  value,
+  onChange,
+  inputVariant,
+  minDate,
+}) => {
+  
   const convertDateToEventParams = (name, value) => ({
     target: {
       name,
