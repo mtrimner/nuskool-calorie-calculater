@@ -17,7 +17,7 @@ const RadioGroup = ({ name, label, value, onChange, items }) => {
             <FormControlLabel
               key={index}
               value={item.id}
-              control={<Radio />}
+              control={<Radio color="primary" />}
               label={item.title}
             />
           );

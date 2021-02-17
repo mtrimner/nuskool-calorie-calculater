@@ -6,7 +6,7 @@ import {
 import DateFnsUtils from "@date-io/date-fns";
 
 
-const DatePicker = ({ name, label, value, onChange, inputVariant }) => {
+const DatePicker = ({ name, label, value, onChange, inputVariant, minDate }) => {
   const convertDateToEventParams = (name, value) => ({
     target: {
       name,
@@ -24,7 +24,7 @@ const DatePicker = ({ name, label, value, onChange, inputVariant }) => {
         name={name}
         value={value}
         onChange={(date) => onChange(convertDateToEventParams(name, date))}
-        minDate={Date()}
+        minDate={minDate}
       />
     </MuiPickersUtilsProvider>
   );
