@@ -15,6 +15,7 @@ const ShowData = ({
   let BMR = parseInt(
     calculations.calculateBMR(age, currentWeight, height, gender)
   );
+  
   let TDEE = parseInt(calculations.calculateTDEE(BMR, activityMultiplier));
   //   let daysFromTargetDate = parseInt((targetDate.getTime() - new Date().getTime()) / (1000 * 3600 * 24))
   let caloriesForGoal = parseInt(

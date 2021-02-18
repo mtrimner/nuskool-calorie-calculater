@@ -19,10 +19,13 @@ const useStyles = makeStyles((theme) => ({
     spacing: 10,
   },
   list: {
-    padding: "20px",
+    padding: "10px",
   },
   content: {
-    padding: "20px",
+    padding: "5px",
+  },
+  cardContent: {
+    padding: "5px",
   },
   action: {
     display: "flex",
@@ -37,7 +40,7 @@ const Card = ({ title, data, units, content }) => {
       <CardHeader title={title} className={classes.header} />
       <Divider variant="middle" />
       <CardContent>
-        <Typography variant="h4" align="center">
+        <Typography variant="h5" align="center" >
           {data}
         </Typography>
         <Typography align="center">{units}</Typography>

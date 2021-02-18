@@ -33,7 +33,7 @@ const Display = () => {
     activityMultiplier,
     targetDate,
   } = data;
-  const height = data.feet * 12 + data.inches;
+  const height = parseInt(data.feet) * 12 + parseInt(data.inches);
   console.log(data);
 
   const applyData = (values) => {

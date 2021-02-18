@@ -54,7 +54,7 @@ const initialValues = {
   currentWeight: "",
   goalWeight: "",
   activityMultiplier: "1.2",
-  targetDate: new Date(new Date().getTime() + 86400000),
+  targetDate: new Date(new Date().getTime() + (86400000 * 7)),
 };
 
 const Form = ({ applyData }) => {
@@ -107,7 +107,7 @@ const Form = ({ applyData }) => {
 
   return (
     <form onSubmit={handleSubmit} className={classes.root}>
-      <Grid container spacing={4}>
+      <Grid container spacing={2}>
         <Grid item xs={12} sm={6}>
           <Controls.Input
             type="number"
@@ -124,7 +124,7 @@ const Form = ({ applyData }) => {
             name="gender"
             value={values.gender}
             onChange={handleChange}
-            label="Gender"
+            label="Sex"
             items={genderItems}
           />
         </Grid>
@@ -151,7 +151,7 @@ const Form = ({ applyData }) => {
           />
         </Grid>
         <Grid item xs={12} md={6}>
-          <Grid container spacing={4}>
+          <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <Controls.Select
                 name="feet"
